@@ -39,7 +39,7 @@ const Header = () => {
                 <Link to="/about"> about us</Link>
              </li>
              <li className="mx-4 my-6 md:my-0  text-xl">
-              <Link to="/petlist"> Pet List</Link>
+              <Link to="/manageproducts"> manageproducts</Link>
             </li>
           </ul>
 
@@ -60,12 +60,17 @@ const Header = () => {
                 Home
               </Link>
             </li>
+            <li className="mx-4 my-6 md:my-0 menuhover ">
+              <Link className="text-xl " to="/cart">
+                Cart
+              </Link>
+            </li>
 
             <li className=" my-6 md:my-0  menuhover  ">
             </li>
             <li className="my-6 md:my-0 menuhover">
-              <Link className="text-xl  " to="/petlist">
-                Pet List
+              <Link className="text-xl  " to="/manageproducts">
+              Manage Products
               </Link>
             </li>
           </ul>

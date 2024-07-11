@@ -13,6 +13,9 @@ import AllProductsPage from "./pages/AllProductsPage.tsx";
 import CheckoutPage from "./pages/CheckoutPage.tsx";
 import ManageProductsPage from "./pages/ManageProductsPage.tsx";
 import SingleProductPage from "./pages/SingleProductPage.tsx";
+import Cart from "./pages/Cart.tsx";
+import MainLayout from "./layout/ManageLayout.tsx";
+import UserProducts from "./pages/UserProducts.tsx";
 
 const router = createBrowserRouter([
   {
@@ -28,23 +31,37 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path:"/allproducts",
-        element: <AllProductsPage/>
+        path: "/allproducts",
+        element: <AllProductsPage />
       },
       {
         path: "/checkout",
         element: <CheckoutPage />,
       },
       {
-        path:'/manageproducts',
-        element: <ManageProductsPage/>
+        path: '/singleproduct/:id',
+        element: <SingleProductPage />
       },
       {
-        path:'/singleproduct',
-        element: <SingleProductPage/>
+        path: "/cart",
+        element: <Cart />,
       }
     ]
   },
+  {
+    path: "/manageproducts",
+    element: <MainLayout />,
+    children:[
+      {
+        path: "",
+        element: <ManageProductsPage></ManageProductsPage>
+      },
+      {
+        path: "userproducts",
+        element: <UserProducts/>
+      }
+    ]
+  }
 ]);
 
 

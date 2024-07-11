@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/counter/counterSlice";
+import cartReduce from "./features/products/singleproductslice";
+
 import { baseApi } from "./api/api";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; 
@@ -11,13 +12,19 @@ const persistConfig = {
 };
 
 
-const persistedReducer = persistReducer(persistConfig,counterReducer );
+
+
+  // other reducers
+
+const persistedReducer = persistReducer(persistConfig,cartReduce );
+
 
 export const store = configureStore({
-  
+
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
-    counter: persistedReducer,
+    cart: persistedReducer,
+
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
