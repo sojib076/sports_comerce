@@ -42,7 +42,7 @@ const FeaturedSection = () => {
   return (
     <div className="lg:mt-20 lg:px-20 my-10 px-5 font-serif">
       <div className="">
-        <h1 className="lg:text-5xl text-2xl font-extrabold">Featured</h1>
+        <h1 className="lg:text-5xl text-2xl font-extrabold my-5">Featured</h1>
         <Carousel className="lg:my-10">
           <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 mb-5">
             {products.map((product:any) => (
