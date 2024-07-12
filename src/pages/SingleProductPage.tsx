@@ -61,7 +61,7 @@ const Singleproduct = () => {
       <div className="grid lg:grid-cols-2 lg:p-10 overflow-hidden ">
         <div className="flex  flex-col-reverse justify-evenly ">
           <div className=" lg:w-[75%] lg:h-[90%]">
-            <img src={data.image} alt="jacket" className="lg:w-[90%] ml-10  " />
+            <img src={data.image} alt="jacket" className="lg:w-[90%] w-[80%] ml-10  " />
           </div>
 
         </div>

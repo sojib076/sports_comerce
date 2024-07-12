@@ -45,7 +45,7 @@ const FeaturedSection = () => {
     <div  className="lg:mt-20 lg:px-20 my-10 px-5 font-serif">
       <div className="">
         <h1 className="lg:text-5xl text-2xl font-extrabold my-5">Featured</h1>
-        <Carousel className="lg:my-10">
+        <Carousel className="">
           <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 mb-5">
             {products.map((product:any) => (
               <CarouselItem  data-aos="fade-up"
@@ -88,8 +88,8 @@ const FeaturedSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="lg:hidden flex lg:ml-[0px] ml-[50px] bg-black text-white hover:bg-black hover:text-white" />
-          <CarouselNext className="lg:mr-[0px] lg:hidden flex mr-[50px] bg-black text-white border-none hover:bg-black hover:text-white" />
+          <CarouselPrevious className="lg:hidden flex lg:ml-[0px] ml-[30px] bg-black text-white hover:bg-black hover:text-white" />
+          <CarouselNext className="lg:mr-[0px] lg:hidden flex mr-[30px] bg-black text-white border-none hover:bg-black hover:text-white" />
         </Carousel>
       </div>
     </div>

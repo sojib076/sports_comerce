@@ -11,17 +11,17 @@ const Banner = () => {
             <Carousel>
                 <CarouselContent >
                 <CarouselItem>
-                        <div className="relative w-full lg:h-[100vh] h-[50vh] bg-cover bg-center" style={{ backgroundImage: `url(${bannerimagetwo})` }}>
+                        <div  className="relative w-full lg:h-[100vh] h-[50vh] bg-cover bg-center" style={{ backgroundImage: `url(${bannerimagetwo})` }}>
                             <div className="lg:w-[600.14px] w-[60%] relative z-20 lg:top-40 top-20 lg:left-14 left-10 flex flex-col items-start lg:ml-7   rounded-lg">
-                                <h1 className="lg:text-4xl font-sans font-extrabold text-white">
+                                <h1  data-aos="fade-up" className="lg:text-4xl font-sans font-extrabold text-white">
                                     Speicial Offers <br />
 
                                 </h1>
-                                <h1 className="lg:text-7xl text-4xl font-sans font-extrabold text-white mt-2">
+                                <h1  data-aos="fade-up"  className="lg:text-7xl text-4xl font-sans font-extrabold text-white mt-2">
                                     <span className="text-lime-400"> 10 % Off </span> from 30  December
                                     <br />
                                 </h1>
-                                <Button className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
+                                <Button variant='outline' className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
                             </div>
                         </div>
                     </CarouselItem>
@@ -36,7 +36,7 @@ const Banner = () => {
                                     <span className="text-lime-400"> 10 % Off </span> from 30  December
                                     <br />
                                 </h1>
-                                <Button className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
+                                <Button variant='outline' className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
                             </div>
                         </div>
                     </CarouselItem>
@@ -51,7 +51,7 @@ const Banner = () => {
                                     <span className="text-lime-400"> 10 % Off </span> from 30  December
                                     <br />
                                 </h1>
-                                <Button className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
+                                <Button variant='outline' className="mt-4  text-black hover:scale-90 trasition-all ease-in-out duration-300">Shop Now</Button>
                             </div>
                         </div>
                     </CarouselItem>
