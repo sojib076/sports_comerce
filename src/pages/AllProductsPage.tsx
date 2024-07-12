@@ -14,7 +14,7 @@ import {
 
 import { toast } from "sonner";
 import renderStars from "@/helpers/renderStars";
-import { Loader2Icon, Star } from "lucide-react";
+import { Filter, Loader2Icon, Star } from "lucide-react";
 import Rating from "react-rating";
 import { Link, useLocation } from "react-router-dom";
 import { useGetProductsQuery } from "@/redux/api/api";
@@ -98,7 +98,7 @@ const AllProductsPage = () => {
     }
     return (
         <div>
-            <div className="font-sans lg:px-20 lg:py-20 py-5 px-2">
+            <div className="font-sans lg:px-20 lg:py-20 py-5 px-2 ">
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -139,12 +139,19 @@ const AllProductsPage = () => {
                             </form>
 
 
-                            <div className="flex  lg:gap-5 items-center lg:mt-0 mt-4">
+                            <div className="flex  lg:gap-5 items-center lg:mt-0 mt-2">
 
 
                                 <Sheet>
-                                    <SheetTrigger className="text-xl" >Filter </SheetTrigger>
+                                    <SheetTrigger className="text-xl" ><span className="flex justify-center items-center"> 
+                                  
+                                    <Filter className="text-sm mt-2"/>   Filter 
+                                    </span>
+                                   
+                                     </SheetTrigger>
+                                    
                                     <SheetContent className="overflow-auto">
+                                        
                                         <SheetHeader>
                                             <SheetTitle>Sort As your need </SheetTitle>
 
@@ -220,7 +227,7 @@ const AllProductsPage = () => {
                                 </Sheet>
                             </div>
                         </div>
-
+                        <hr className="w-full border-lime-500 my-4" />
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                             {products?.map((product: Product) => (
                                 <div key={product._id} className="lg:w-[100%] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">

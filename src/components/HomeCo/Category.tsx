@@ -10,12 +10,12 @@ const Category = () => {
 
  
     return (
-        <div  data-aos="fade-up" className=" lg:my-0 lg:px-20 my-10 px-5 font-serif">
+        <div  data-aos="fade-up" className=" lg:my-0 lg:px-20  px-5 font-serif">
             <div className="  ">
-                <h1 className="lg:text-5xl text-2xl font-extrabold mb-5">
+                <h1 className="lg:text-5xl text-2xl font-extrabold mb-5  border-b-2 border-lime-500 w-fit pb-1">
                     Category
                 </h1>
-
+             
                 <div className="grid lg:grid-cols-3 lg:gap-10 gap-5   p-5 lg:my-10">
                     
                     <div>

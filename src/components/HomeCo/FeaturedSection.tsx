@@ -44,9 +44,12 @@ const FeaturedSection = () => {
   return (
     <div  className="lg:mt-20 lg:px-20 my-10 px-5 font-serif">
       <div className="">
-        <h1 className="lg:text-5xl text-2xl font-extrabold my-5">Featured</h1>
+        <h1 className="lg:text-5xl text-2xl font-extrabold my-5 border-b-2 border-lime-500 w-fit p-1">Featured 
+  
+        </h1>
+       
         <Carousel className="">
-          <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 mb-5">
+          <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 lg:mb-5">
             {products.map((product:any) => (
               <CarouselItem  data-aos="fade-up"
                 className="lg:basis-[32%] hover:scale-90 py-1 rounded-lg transition-all ease-in 3s"
