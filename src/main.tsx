@@ -18,6 +18,7 @@ import MainLayout from "./layout/ManageLayout.tsx";
 import UserProducts from "./pages/UserProducts.tsx";
 import Success from "./pages/Success.tsx";
 import Updateproduct from "./pages/Updateproduct.tsx";
+import 'aos/dist/aos.css';
 
 const router = createBrowserRouter([
   {

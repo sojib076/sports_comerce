@@ -18,7 +18,7 @@ const ContactSection = () => {
     ];
     return (
 
-        <div className="mx-auto max-w-7xl  bg-white  py-10 lg:px-20 px-5">
+        <div  data-aos="fade-up" className="mx-auto max-w-7xl  bg-white  py-10 lg:px-20 px-5">
             <div className="lg:mb-4">
                 <div className="lg:mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
 

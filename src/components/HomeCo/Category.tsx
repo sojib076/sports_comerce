@@ -10,7 +10,7 @@ const Category = () => {
 
  
     return (
-        <div className=" bg-white lg:mt-20 lg:px-20 lg:my-20  px-5">
+        <div  data-aos="fade-up" className=" bg-white lg:mt-20 lg:px-20 lg:my-20  px-5">
             <div className="  ">
                 <h1 className="lg:text-5xl text-2xl font-extrabold">
                     Category

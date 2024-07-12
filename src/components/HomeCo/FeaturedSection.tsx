@@ -6,9 +6,11 @@ import renderStars from "@/helpers/renderStars";
 import { useGetProductsQuery } from "@/redux/api/api";
 import { Loader2Icon } from "lucide-react";
 import { useEffect } from "react";
+import Aos from "aos";
 
 
 const FeaturedSection = () => {
+  Aos.init({ duration: 2000 });
   const { data, isLoading, isError, refetch} = useGetProductsQuery({ searchTerm: "", category: "" });
   const products = data?.data?.slice(0, 3) || [];
     useEffect(() => {
@@ -40,13 +42,13 @@ const FeaturedSection = () => {
 
 
   return (
-    <div className="lg:mt-20 lg:px-20 my-10 px-5 font-serif">
+    <div  className="lg:mt-20 lg:px-20 my-10 px-5 font-serif">
       <div className="">
         <h1 className="lg:text-5xl text-2xl font-extrabold my-5">Featured</h1>
         <Carousel className="lg:my-10">
           <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 mb-5">
             {products.map((product:any) => (
-              <CarouselItem
+              <CarouselItem  data-aos="fade-up"
                 className="lg:basis-[32%] hover:scale-90 py-1 rounded-lg transition-all ease-in 3s"
                 key={product._id}
               >
