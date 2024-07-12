@@ -14,8 +14,11 @@ const ManageProductsPage = () => {
 
     const [editorValue, setEditorValue] = useState<string>('');
 
-    const [createProduct, { isLoading }] = useCreateProductMutation();
-    const { data, refetch } = useGetProductsQuery({ searchTerm: "", category: "" });
+    const [createProduct] = useCreateProductMutation();
+    const {  data,refetch } = useGetProductsQuery({ searchTerm: "", category: "" });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const datas = data?.data;
+    console.log(datas);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSubmit = (e: any) => {
     

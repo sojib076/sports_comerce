@@ -34,7 +34,9 @@ const About = () => {
                             DS SPORTS ACCESSORIES Best in the Business
                         </h1>
                         <p className="py-6">
-                            DS ACCESSORIES Company founded on 2023 by Mr. Sojib . We Provide best quality sports accessories in the market. We have a team of professionals who are dedicated to providing the best quality products to our customers. We have a wide range of products that are suitable for all types of sports. We are committed to providing the best customer service and satisfaction. We are always looking for ways to improve our products and services to meet the needs of our customers. We are proud to be one of the leading sports accessories companies in the market.
+                            DS ACCESSORIES Company founded on 2023 by Mr. Sojib . We Provide best quality sports accessories in the market. We have a team of professionals who are dedicated to providing the best quality products to our customers. We have a wide range of products that are suitable for all types of sports. We are committed to providing the best customer service and satisfaction. We are always looking for ways to improve our products and services to 
+                            
+                         the needs of our customers. We are proud to be one of the leading sports accessories companies in the market.
 
                         </p>
                         <div className="flex justify-between text-center">
@@ -61,8 +63,8 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className='  px-5'>
-                <h1 className='text-center lg:text-7xl font-sans font-extrabold text-black'>
+            <div className='  mt-10 px-5'>
+                <h1 className='text-center text-4xl lg:text-7xl font-sans font-extrabold text-black'>
                     Meet the  team
                 </h1>
                 <div className='grid lg:grid-cols-3 grid-cols-1 lg:gap-0 gap-y-5 my-10 lg:px-20'>
@@ -111,7 +113,7 @@ const About = () => {
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9230354376946!2d90.11047050831803!3d23.60709303203826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37558fc491142013%3A0x76e743125e36754b!2z4Kau4Ka-4Kad4Ka_4KawIOCmmuCmsCDgpqzgpr_gprLgpr7gprjgpqrgp4HgprAg4Kam4KeL4Ka54Ka-4KawLCDgpqLgpr7gppXgpr4!5e0!3m2!1sen!2sbd!4v1720798176860!5m2!1sen!2sbd"
         className="rounded-lg shadow-lg w-full max-w-md lg:max-w-full lg:h-screen"
         style={{ border: 0 }}
-        allowFullScreen=""
+        allowFullScreen={true}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Google Maps Location"
