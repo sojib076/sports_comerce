@@ -14,9 +14,11 @@ const Header = () => {
       <div className="sticky top-0 z-40">
         <nav className="w-full p-5 bg-black text-white md:flex md:items-center md:justify-between">
           <div className="flex justify-between items-center">
-            <span className="text-2xl cursor-pointer">
-              loading...
+           <Link to='/'>
+           <span className="text-sm cursor-pointer mt-4">
+               <span className="text-lime-400 font-bold">  DS SPORTS </span> ACCESSORIES
             </span>
+            </Link>
             <span
               className="text-3xl cursor-pointer mx-2 md:hidden block text-white"
               onClick={toggleMenu}

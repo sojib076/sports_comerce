@@ -22,6 +22,9 @@ import { Product } from "@/helpers/Products";
 
 
 const AllProductsPage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const [products, setProducts] = useState([] as Product[]);
     const [ratingValue, setRatingValue] = useState(0);
     const [searchTerm, setSearchTerm] = useState("");
@@ -145,7 +148,7 @@ const AllProductsPage = () => {
                                 <Sheet>
                                     <SheetTrigger className="text-xl" ><span className="flex justify-center items-center"> 
                                   
-                                    <Filter className="text-sm mt-2"/>   Filter 
+                                    <Filter className="text-sm lg:mt-2 mt-1"/>   Filter 
                                     </span>
                                    
                                      </SheetTrigger>
@@ -231,7 +234,7 @@ const AllProductsPage = () => {
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                             {products?.map((product: Product) => (
                                 <div key={product._id} className="lg:w-[100%] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                                    <img className="lg:w-40 w-[50%]  rounded-t-lg ml-20  " src={product.image} alt={product.name} />
+                                    <img className="lg:w-[100%] lg:h-[180px] w-[50%]  rounded-t-lg  " src={product.image} alt={product.name} />
                                     <div className="p-4">
 
                                         <h2 className="text-lg font-semibold w-[90%]">{product.name}</h2>

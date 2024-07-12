@@ -97,7 +97,7 @@ const ContactSection = () => {
                                 </div>
                           
                             <div className="text-center">
-                                <Button className="text-black w-full bg-lime-300"> Send Message</Button>
+                                <Button variant='outline'  className="hover:scale-90 text-black w-full bg-lime-300"> Send Message</Button>
                             </div>
                         </form>
                     </div>
