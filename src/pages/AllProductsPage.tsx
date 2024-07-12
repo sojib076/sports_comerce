@@ -14,9 +14,9 @@ import {
 
 import { toast } from "sonner";
 import renderStars from "@/helpers/renderStars";
-import { Star } from "lucide-react";
+import { Loader2Icon, Star } from "lucide-react";
 import Rating from "react-rating";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useGetProductsQuery } from "@/redux/api/api";
 import { Product } from "@/helpers/Products";
 
@@ -30,6 +30,7 @@ const AllProductsPage = () => {
     const { data, isLoading, isError,refetch } = useGetProductsQuery({ searchTerm, category});
     const datas = data?.data;
     const location = useLocation();
+
     useEffect(() => {
         const searchParams = new URLSearchParams(location.search);
         const categoryParam = searchParams.get('category') || '';
@@ -41,9 +42,9 @@ const AllProductsPage = () => {
         setProducts(datas);
     }, [datas]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }   
+    if (isLoading) return <div className=''> 
+    <h1 > <Loader2Icon className='animate-spin w-[40%] h-[50vh]  mx-auto'></Loader2Icon> </h1>
+</div>;   
 
 
 
@@ -67,12 +68,15 @@ const AllProductsPage = () => {
 
     const handleRemoveFilters = () => {
         setProducts(data?.data);
+        setSearchTerm('')
+        setCategory('')
+        refetch();
         toast.success('Filters Removed Successfully');
     };
 
     const handelcategory = (category: string) => {
-        const filteredProducts = datas.filter((product: { category: string; }) => product.category === category);
-        setProducts(filteredProducts);
+        setCategory (category);
+    
         toast.success(`Filtered by ${category} Category Successfully`);
     };
     const handelbrand = (brand: string) => {
@@ -165,17 +169,17 @@ const AllProductsPage = () => {
                                                 <div className=" my-5">
                                                     <h1 className="text-xs font-semibold font-serif text-black my-1" >Category</h1>
                                                     <div className="flex justify-around">
-                                                        <button onClick={() => handelcategory('Womens')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Womens </button>
-                                                        <button onClick={() => handelcategory('shoe')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Shoe </button>
-                                                        <button onClick={() => handelcategory('men')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Men </button>
+                                                        <button onClick={() => handelcategory('Shoes')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 ">  Shoes </button>
+                                                        <button onClick={() => handelcategory('Boxing')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Boxing </button>
+                                                        <button onClick={() => handelcategory('Basketball')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Basketball </button>
                                                     </div>
                                                 </div>
                                                 <div className=" my-5">
                                                     <h1 className="text-xs font-semibold font-serif text-black my-1" >Brand</h1>
                                                     <div className="flex justify-around">
                                                         <button onClick={() => handelbrand('Nike')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> Nike </button>
-                                                        <button onClick={() => handelbrand('like')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 ">  Bike </button>
-                                                        <button onClick={() => handelcategory('bike')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 "> cike </button>
+                                                        <button onClick={() => handelbrand('Everlast')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 ">  Everlast </button>
+                                                        <button onClick={() => handelbrand('Adidas')} className="text-black mt-2  font-semibold text-sm border outline-1 p-2 px-4 ">Adidas</button>
                                                     </div>
                                                 </div>
                                                 <div className="my-5">
@@ -220,7 +224,7 @@ const AllProductsPage = () => {
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                             {products?.map((product: Product) => (
                                 <div key={product._id} className="lg:w-[100%] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                                    <img className="w-full h-40 object-cover rounded-t-lg" src={product.image} alt={product.name} />
+                                    <img className="lg:w-40 w-[50%]  rounded-t-lg ml-20  " src={product.image} alt={product.name} />
                                     <div className="p-4">
 
                                         <h2 className="text-lg font-semibold w-[90%]">{product.name}</h2>
@@ -234,7 +238,7 @@ const AllProductsPage = () => {
                                                 <h5 className="text-black">Brand: {product.brand}</h5>
                                             </div>
                                             <div>
-                                                <h5 className="text-black font-normal border-b-2 border-lime-500">Price: {product.price}</h5>
+                                                <h5 className="text-black font-normal border-b-2 border-lime-500">Price: {product.price}$</h5>
                                                 <h5 className="text-black">Stock: {product.stockQuantity}</h5>
                                             </div>
                                         </div>

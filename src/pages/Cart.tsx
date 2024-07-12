@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import  { useEffect } from "react";
+import { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { decreaseProductQuantity, productstock, removeProduct, updateProductQuantity } from "@/redux/features/products/singleproductslice";
@@ -10,25 +10,23 @@ import { toast } from "sonner";
 import { useCheckStockStatusQuery } from "@/redux/api/api";
 
 
-
-
 const Cart = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const cart = useAppSelector((state) => state.cart.products) || [];
 
   const productIds = cart.map((product) => product.id);
-  const { data: stockStatus} = useCheckStockStatusQuery(productIds, { skip: productIds.length === 0 });
+  const { data: stockStatus } = useCheckStockStatusQuery(productIds, { skip: productIds.length === 0 });
 
   useEffect(() => {
     if (stockStatus) {
-      stockStatus?.data?.forEach((status:any) => {
+      stockStatus?.data?.forEach((status: any) => {
         dispatch(productstock({ id: status.id, stock: status.stock }));
       });
     }
   }, [stockStatus, dispatch]);
 
-  const handleIncreaseQuantity = (id:string) => {
+  const handleIncreaseQuantity = (id: string) => {
     const product = cart.find((p) => p.id === id);
     if (product && product.stock > 0 && product.quantity < product.stock) {
       dispatch(updateProductQuantity({ id, quantity: product.quantity + 1 }));
@@ -37,7 +35,7 @@ const Cart = () => {
     }
   };
 
-  const handleDecreaseQuantity = (id:string) => {
+  const handleDecreaseQuantity = (id: string) => {
     const product = cart.find((p) => p.id === id);
     if (product && product.quantity > 1) {
       dispatch(decreaseProductQuantity({ id, quantity: 1 }));
@@ -48,7 +46,7 @@ const Cart = () => {
     return cart.reduce((total, product) => total + product.price * product.quantity, 0);
   };
 
-  const calculateTax = (subtotal:number) => {
+  const calculateTax = (subtotal: number) => {
     return subtotal * 0.15;
   };
 
@@ -62,7 +60,7 @@ const Cart = () => {
     if (isOutOfStock) {
       toast.warning("Some items in your cart are out of stock.");
     } else {
-      
+
       navigate("/checkout");
     }
   };
@@ -73,18 +71,18 @@ const Cart = () => {
         <div className="w-full max-w-7xl px-4 md:px-5 lg:px-6 mx-auto">
           <h2 className="font-bold text-4xl leading-10 mb-8 text-center text-black">Shopping Cart</h2>
           {cart.map((product) => (
-            <div key={product.id} className="rounded-3xl border-2 border-gray-200 p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4">
-              <Button onClick={() => dispatch(removeProduct(product.id))}>
+            <div key={product.id} className="rounded-3xl border-2 border-gray-200 
+            p-4 lg:p-8 grid grid-cols-12 mb-8 max-lg:max-w-lg max-lg:mx-auto gap-y-4 ">
+              <Button className="bg-red-500 hover:scale-90 hover:bg-black hover:text-white" onClick={() => dispatch(removeProduct(product.id))}>
                 <X size={16} />
               </Button>
 
               <div className="col-span-12 lg:col-span-10 detail w-full lg:pl-3">
                 <div className="flex items-center justify-between w-full mb-4">
-                  <h5 className="font-bold text-2xl text-gray-900">{product.name}</h5>
+                  <h5 className="font-bold text-2xl text-gray-900 ml-10">{product.name}</h5>
                 </div>
-                <p className="font-normal text-base leading-7 text-gray-500 mb-6 lg:block hidden">
-                  Introducing our sleek round white portable speaker, the epitome of style and sound! Elevate your auditory experience with this compact yet powerful device that delivers crystal-clear audio wherever you go. <a href="#" className="text-lime-600">More....</a>
-                </p>
+
+             
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-4">
                     <button
@@ -138,7 +136,7 @@ const Cart = () => {
               >
                 Proceed to Checkout
               </Button>
-             
+
             </div>
           ) : (
             <h1 className="text-center text-2xl font-bold">Your Cart is Empty</h1>

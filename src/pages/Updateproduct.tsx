@@ -1,41 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useCreateProductMutation, useGetProductsQuery } from "@/redux/api/api";
+import { useGetSingleProductQuery, useUpdateProductMutation } from "@/redux/api/api";
 import {  Star } from "lucide-react";
 import { useState } from "react";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Rating from "react-rating";
+import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 
-const ManageProductsPage = () => {
+const Updateproduct = () => {
     const [ratingValue, setRatingValue] = useState(0);
-
     const [editorValue, setEditorValue] = useState<string>('');
-
-    const [createProduct, { isLoading }] = useCreateProductMutation();
-    const { data, refetch } = useGetProductsQuery({ searchTerm: "", category: "" });
+    const { id } = useParams()
+  const { data: product ,refetch} = useGetSingleProductQuery(id as string)
+  const [updateProduct] = useUpdateProductMutation();
+    
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleSubmit = (e: any) => {
     
         e.preventDefault();
         const { name, category, stockquantity, brand, image, price } = e.target.elements;
         const formdata = {
-            name: name.value,
-            category: category.value,
-            stockQuantity: stockquantity.value,
-            brand: brand.value,
-            image: image.value,
-            rating: ratingValue,
-            price: price.value,
-            description: editorValue
+            name: name.value ? name.value : product?.data.name,
+            category: category.value ? category.value : product?.data.category,
+            stockQuantity: stockquantity.value ? stockquantity.value : product?.data.stockQuantity,
+            brand: brand.value ? brand.value : product?.data.brand,
+            image: image.value ? image.value : product?.data.image,
+            rating: ratingValue ? ratingValue : product?.data.rating,
+            price: price.value ? price.value : product?.data.price,
+            description: editorValue ? editorValue : product?.data.description,
         }
-        createProduct(formdata) 
-    
-        try {
+        try { 
+            updateProduct({id:id as string,body:formdata})
             refetch();
-            toast.success("Product added successfully");
+            toast.success("Product UPdated successfully");
          
         } catch (error) {
             
@@ -52,7 +52,7 @@ const ManageProductsPage = () => {
             <Card className="font-serif">
                 <CardHeader className="space-y-1 ml-10 ">
                     <CardTitle className="text-2xl">
-                        Please add Your Products Details
+                        Please  Update Product
                     </CardTitle>
 
                     <CardDescription>
@@ -71,30 +71,24 @@ const ManageProductsPage = () => {
 
                     <form onSubmit={handleSubmit} className="p-6 border border-gray-300 rounded-md">
                         <div className="grid gap-2 mb-4">
-                            <input id="name" type="text" placeholder=" Product Name " className="p-2 w-full border border-gray-300 rounded-md" required />
+                            <input id="name" type="text" placeholder={product?.data.name} className="p-2 w-full border border-gray-300 rounded-md"  />
                         </div>
                         <div className="grid gap-2 mb-4">
-                            <input id="category" type="text" placeholder="Category " className="p-2 w-full border border-gray-300 rounded-md" required />
+                            <input id="category" type="text" placeholder={product?.data.category}  className="p-2 w-full border border-gray-300 rounded-md"  />
                         </div>
                         <div className="grid gap-2 mb-4">
-                            <input id="stockquantity" type="number" placeholder=" stock quantity " className="p-2 w-full border border-gray-300 rounded-md" required />
+                            <input id="stockquantity" type="number" placeholder={product?.data.stockQuantity}  className="p-2 w-full border border-gray-300 rounded-md"  />
                         </div>
                         <div>
                             <div className="grid gap-2 mb-4">
-                                <input id="brand" type="text" placeholder="Brand" className="p-2 w-full border border-gray-300 rounded-md" required />
+                                <input id="brand" type="text" placeholder={product?.data.brand}  className="p-2 w-full border border-gray-300 rounded-md"  />
                             </div>
                             <div className="grid gap-2 mb-4">
-                                <input id="price" type="number" step="0.01" placeholder="Price" className="p-2 w-full border border-gray-300 rounded-md" required />
+                                <input id="price" type="number" step="0.01" placeholder={product?.data.price} className="p-2 w-full border border-gray-300 rounded-md"  />
                             </div>
                             <div className="grid gap-2 mb-4">
-                                <input id="image" type="text" step="0.01" placeholder="Image" className="p-2 w-full border border-gray-300 rounded-md" required />
+                                <input id="image" type="text" step="0.01" placeholder="Image" className="p-2 w-full border border-gray-300 rounded-md"  />
                             </div>
-
-
-
-
-
-
 
 
                             {/* @ts-expect-error their is no type declaration file for react rating*/}
@@ -102,7 +96,7 @@ const ManageProductsPage = () => {
                                 emptySymbol={<Star size={40} color="orange" />}
                                 fullSymbol={<Star size={40} color="orange" fill="orange" />}
                                 fractions={2}
-                                initialRating={ratingValue}
+                                initialRating={product?.data.rating}
                                 stop={5}
                                 onClick={(value) => setRatingValue(value)}
                             />
@@ -136,4 +130,4 @@ const ManageProductsPage = () => {
     );
 };
 
-export default ManageProductsPage;
+export default Updateproduct;

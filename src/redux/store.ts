@@ -12,10 +12,6 @@ const persistConfig = {
 };
 
 
-
-
-  // other reducers
-
 const persistedReducer = persistReducer(persistConfig,cartReduce );
 
 

@@ -2,25 +2,28 @@
 
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import jacketform from "@/assets/jacket.jpg";
+
 import renderStars from "@/helpers/renderStars";
 import { useAppDispatch } from "@/redux/hooks";
 import { addProduct } from "@/redux/features/products/singleproductslice";
 import { useGetSingleProductQuery } from "@/redux/api/api";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { Loader2Icon } from "lucide-react";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 
 const Singleproduct = () => {
   const [currentStock, setCurrentStock] = useState(0);
+  const [loading,setLoading]= useState(false)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const dispatch = useAppDispatch();
-  const { id } = useParams() 
-  const {data:product,isLoading }=useGetSingleProductQuery(id as string) 
+  const { id } = useParams()
+  const { data: product, isLoading } = useGetSingleProductQuery(id as string)
 
   const data = product?.data
   useEffect(() => {
@@ -29,10 +32,13 @@ const Singleproduct = () => {
     }
   }, [product]);
 
-  if (isLoading) {
-    return <h1>Loading...</h1>
-  }
+  if (isLoading) return <div className=''>
+    <h1 > <Loader2Icon className='animate-spin w-[40%] h-[100vh]  mx-auto'></Loader2Icon> </h1>
+  </div>;
+
   const handelcart = () => {
+    setLoading(true)
+
     if (currentStock > 0) {
       dispatch(addProduct({
         id: id,
@@ -43,18 +49,19 @@ const Singleproduct = () => {
       }));
       setCurrentStock(currentStock - 1);
       toast.success("Product Added To Cart");
+      setLoading(false)
     } else {
       toast.warning(`Not enough stock. Only ${data.stockQuantity} product(s) left.`);
     }
   };
 
-  {/* <div dangerouslySetInnerHTML={{ __html: data?.description }}></div> */ }
+
   return (
     <>
       <div className="grid lg:grid-cols-2 lg:p-10 overflow-hidden ">
         <div className="flex  flex-col-reverse justify-evenly ">
           <div className=" lg:w-[75%] lg:h-[90%]">
-            <img src={jacketform} alt="jacket" className="w-full h-full object-cover" />
+            <img src={data.image} alt="jacket" className="lg:w-[90%] ml-10  " />
           </div>
 
         </div>
@@ -74,14 +81,21 @@ const Singleproduct = () => {
               <h6 className=" font-semibold " > Brand: {data.brand}</h6>
             </div>
             <hr className="bg-black my-2 " />
-            <div dangerouslySetInnerHTML={{ __html: data.description.length > 10 ? `
-                    ${data.description.slice(0, 50)}...` : data.description }} />
+            <div dangerouslySetInnerHTML={{
+              __html: 
+   data.description
+            }} />
             <div className="mt-4">
               {
 
-                data.stockQuantity > 0 ? <Button 
-                variant="outline"
-                onClick={handelcart} className="bg-lime-300 text-black w-full"> Add To Cart </Button> : <Button  className="bg-black text-white w-full" disabled> Out Of Stock </Button> 
+                data.stockQuantity > 0 ?
+                 <Button
+                  variant="outline"
+                  onClick={handelcart} className="bg-lime-300 text-black w-full hover:scale-90" > 
+                    {
+                      loading && loading ? <Loader2Icon className='animate-spin w-[40%]   mx-auto'></Loader2Icon> : ' Add To Cart'
+                    }
+                   </Button> : <Button className="bg-black text-white w-full" disabled> Out Of Stock </Button>
               }
             </div>
 
@@ -89,14 +103,14 @@ const Singleproduct = () => {
           </div>
         </div>
       </div>
-      
-      <h6 className="my-10 lg:text-4xl font-sans font-semibold bg-lime-400 w-fit mx-auto py-4 px-10 rounded-sm"> 
-      Related Products
+
+      <h6 className="my-10 lg:text-4xl font-sans font-semibold bg-lime-400 w-fit mx-auto py-4 px-10 rounded-sm">
+        Related Products
       </h6>
 
     </>
- 
+
   );
 };
 
-export default  Singleproduct
+export default Singleproduct

@@ -7,12 +7,12 @@ const ContactSection = () => {
         {
             icon: <MapPin className="h-6 w-6" />,
             title: "Our Address",
-            details: ["1230 Maecenas Street Donec Road", "New York, EEUU"]
+            details: ["1234 Street Name, City Name", "Bangladesh"]
         },
         {
             icon: <Phone className="h-6 w-6" />,
             title: "Contact",
-            details: ["Mobile: +1 (123) 456-7890", "Mail: tailnext@gmail.com"]
+            details: ["Mobile: +123456789", "Mail: dssports@gmail.com"]
         },
 
     ];
@@ -25,8 +25,8 @@ const ContactSection = () => {
                     <h2 className=" lg:mb-4 font-bold  text-gray-900 text-3xl sm:text-5xl">
                         Get in Touch
                     </h2>
-                    <p className="mx-auto lg:mt-4 max-w-3xl text-xl text-gray-600">
-                        In hac habitasse platea dictumst
+                    <p className="mx-auto lg:mt-4 max-w-3xl text-xl text-gray-600 lg:block hidden">
+                       Best way to reach us is by email. We will get back to you as soon as possible.
                     </p>
                 </div>
             </div>
@@ -34,7 +34,8 @@ const ContactSection = () => {
                 <div className="grid md:grid-cols-2 ">
                     <div className="h-full pr-6">
                         <p className="lg:mt-3 lg:mb-12 my-4 text-lg text-gray-600">
-                            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis nec ipsum orci. Ut scelerisque sagittis ante, ac tincidunt sem venenatis ut.
+                        
+                            We are here to help you with any questions you have. Just drop us a message and we will get back to you as soon as possible.
                         </p>
                         <ul className="mb-6 md:mb-0">
                             {contactData.map((item, index) => (

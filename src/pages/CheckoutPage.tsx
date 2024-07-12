@@ -5,7 +5,7 @@ import { useUpdateStockStatusMutation } from "@/redux/api/api";
 import { resetCheckout } from "@/redux/features/products/singleproductslice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useState,  } from "react";
-// Import helper functions for calculating subtotal and tax
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
     const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ const CheckoutPage = () => {
         address: ''
     });
     const dispatch = useAppDispatch();
-    const cart = useAppSelector((state) => state.cart.products); // Assuming you have a slice named 'cart' that stores 
+    const cart = useAppSelector((state) => state.cart.products); 
   
 
     const calculateSubtotal = () => {
@@ -29,7 +29,7 @@ const CheckoutPage = () => {
       const subtotal = calculateSubtotal();
       const tax = calculateTax(subtotal);
       const total = subtotal + tax;
-      const [updateStockStatus,] = useUpdateStockStatusMutation();
+      const [updateStockStatus] = useUpdateStockStatusMutation();
 
 
     const handleChange = (e:any) => {
@@ -40,14 +40,14 @@ const CheckoutPage = () => {
             [name]: value
         }));
     };
-
+    const navigate = useNavigate()
     const handleSubmit = () => {
         const productIds = cart.map((product) => product.id);
         const stockquantity = cart.map((product) => product.quantity);
         updateStockStatus({ productIds, stockquantity });
+        navigate('/success')
         dispatch(resetCheckout());
         localStorage.removeItem('persist:root');
-
     };
 
     return (
@@ -76,6 +76,7 @@ const CheckoutPage = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
+                            required={true}
                         />
                         <input
                             className="border rounded border-gray-300 p-4 lg:w-[500px] text-base placeholder-gray-600 text-gray-600"
@@ -83,6 +84,7 @@ const CheckoutPage = () => {
                             name="number"
                             value={formData.number}
                             onChange={handleChange}
+                            required={true}
                         />
                         <input
                             className="border rounded border-gray-300 p-4 lg:w-[500px] text-base placeholder-gray-600 text-gray-600"
@@ -91,6 +93,7 @@ const CheckoutPage = () => {
                             placeholder="Your Email"
                             value={formData.email}
                             onChange={handleChange}
+                            required={true}
                         />
                         <input
                             className="border rounded border-gray-300 p-4 lg:w-[500px] text-base placeholder-gray-600 text-gray-600"
@@ -98,6 +101,7 @@ const CheckoutPage = () => {
                             name="address"
                             value={formData.address}
                             onChange={handleChange}
+                            required={true}
                         />
                     </form>
                 </div>

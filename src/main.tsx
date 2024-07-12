@@ -16,6 +16,8 @@ import SingleProductPage from "./pages/SingleProductPage.tsx";
 import Cart from "./pages/Cart.tsx";
 import MainLayout from "./layout/ManageLayout.tsx";
 import UserProducts from "./pages/UserProducts.tsx";
+import Success from "./pages/Success.tsx";
+import Updateproduct from "./pages/Updateproduct.tsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/success",
+        element: <Success/>
       }
     ]
   },
@@ -59,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "userproducts",
         element: <UserProducts/>
+      },
+      {
+        path : "updateproduct/:id",
+        element: <Updateproduct/>
       }
     ]
   }

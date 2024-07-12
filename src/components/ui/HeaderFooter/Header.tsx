@@ -65,6 +65,11 @@ const Header = () => {
                 Cart
               </Link>
             </li>
+            <li className="mx-4 my-6 md:my-0 menuhover ">
+              <Link className="text-xl " to="/allproducts">
+              All Products
+              </Link>
+            </li>
 
             <li className=" my-6 md:my-0  menuhover  ">
             </li>

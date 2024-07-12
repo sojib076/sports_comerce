@@ -7,7 +7,7 @@ export const baseApi = createApi({
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: ({ searchTerm, category }) => {
-        let url = "/Users";
+        let url = "/users/products";
         const params = new URLSearchParams();
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
@@ -18,6 +18,7 @@ export const baseApi = createApi({
         if (params.toString()) {
           url += `?${params.toString()}`;
         }
+        console.log("Fetching URL:", url);
         return {
           url,
           method: "GET",
@@ -27,42 +28,47 @@ export const baseApi = createApi({
     }),
     getSingleProduct: builder.query({
       query: (id) => ({
-        url: `/Users/${id}`,
+        url: `/users/${id}`,
         method: "GET",
       }),
       providesTags: ["Product"],
     }),
     checkStockStatus: builder.query({
       query: (productIds) => ({
-        url: `/Users/checkstock`,
+        url: `/users/checkstock`,
         method: "POST",
         body: { productIds },
       }),
     }),
     updateStockStatus: builder.mutation({
       query: ({ productIds, stockquantity }) => ({
-        url: `/Users/updatestock`,
-        method: 'POST',
+        url: `/users/updatestock`,
+        method: "POST",
         body: { productIds, stockquantity },
       }),
-      // Cache invalidation after mutation
       invalidatesTags: ["Product"],
     }),
     createProduct: builder.mutation({
       query: (newProduct) => ({
-        url: `Users`,
+        url: "users",
         method: "POST",
         body: newProduct,
       }),
-      // Cache invalidation after mutation
+      invalidatesTags: ["Product"],
+    }),
+    updateProduct: builder.mutation({
+      query: ({ id, body }) => ({
+        url: `users/${id}`,
+        method: "PUT",
+        body: body,
+      }),
       invalidatesTags: ["Product"],
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: `Users/${id}`,
+        url: `users/${id}`,
         method: "DELETE",
       }),
-      // Cache invalidation after mutation
       invalidatesTags: ["Product"],
     }),
   }),
@@ -73,6 +79,7 @@ export const {
   useCreateProductMutation,
   useGetSingleProductQuery,
   useCheckStockStatusQuery,
-  useUpdateStockStatusMutation ,
-  useDeleteProductMutation
+  useUpdateStockStatusMutation,
+  useDeleteProductMutation,
+  useUpdateProductMutation
 } = baseApi;
