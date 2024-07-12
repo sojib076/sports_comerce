@@ -5,7 +5,7 @@ import FeaturedSection from "@/components/HomeCo/FeaturedSection";
 
 const Home = () => {
     return (
-        <div className="font-sans">
+        <div className="font-sans overflow-hidden">
             <Banner />
             <FeaturedSection />
             <Category />
