@@ -12,7 +12,7 @@ const About = () => {
     return (
         <>
             <div>
-                <div className="relative w-full lg:h-[100vh] h-[50vh] bg-cover bg-center" style={{ backgroundImage: `url(${bannerimagethree})` }}>
+                <div   data-aos="fade-up"  className="relative w-full lg:h-[100vh] h-[50vh] bg-cover bg-center" style={{ backgroundImage: `url(${bannerimagethree})` }}>
                     <div className="lg:w-[600.14px] w-[60%] relative z-20 lg:top-20 top-10 lg:left-[50%] left-10 flex flex-col items-start lg:ml-7   rounded-lg">
                         <h1 className="lg:text-lg font-sans font-extrabold text-white">
 
@@ -27,7 +27,7 @@ const About = () => {
                 </div>
 
             </div>
-            <div className=" lg:p-20 mt-10 px-5">
+            <div  data-aos="fade-up" className=" lg:p-20 mt-10 px-5">
                 <div className="flex flex-col-reverse lg:flex-row-reverse items-center">
                     <div className="lg:w-[50%] text-left">
                         <h1 className="text-xl md:text-4xl font-bold lg:mt-0 mt-10">
@@ -63,7 +63,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className='  mt-10 px-5'>
+            <div  data-aos="fade-up" className='  mt-10 px-5'>
                 <h1 className='text-center text-4xl lg:text-7xl font-sans font-extrabold text-black'>
                     Meet the  team
                 </h1>
@@ -109,7 +109,7 @@ const About = () => {
             </div>
             <ContactSection />
             <div className="lg:w-full flex justify-center lg:justify-start mb-8 lg:mb-0">
-    <iframe
+    <iframe  data-aos="fade-up"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.9230354376946!2d90.11047050831803!3d23.60709303203826!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37558fc491142013%3A0x76e743125e36754b!2z4Kau4Ka-4Kad4Ka_4KawIOCmmuCmsCDgpqzgpr_gprLgpr7gprjgpqrgp4HgprAg4Kam4KeL4Ka54Ka-4KawLCDgpqLgpr7gppXgpr4!5e0!3m2!1sen!2sbd!4v1720798176860!5m2!1sen!2sbd"
         className="rounded-lg shadow-lg w-full max-w-md lg:max-w-full lg:h-screen"
         style={{ border: 0 }}
