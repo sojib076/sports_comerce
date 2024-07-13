@@ -16,7 +16,7 @@ const Category = () => {
                     Category
                 </h1>
              
-                <div className="grid lg:grid-cols-3 lg:gap-10 gap-5   p-5 lg:my-10">
+                <div className="grid lg:grid-cols-3 lg:gap-10 gap-5   lg:my-10">
                     
                     <div>
                     <Link to="/allproducts?category=Shoes">

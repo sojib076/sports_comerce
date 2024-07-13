@@ -114,19 +114,15 @@ const AllProductsPage = () => {
                         <BreadcrumbSeparator />
                     </BreadcrumbList>
                 </Breadcrumb>
-                <div className=" grid lg:grid-cols-1 lg:px-10 px-4">
+                <div className=" grid lg:grid-cols-1 lg:px-10 ">
                     <div className="">
 
                         <h1>
                             <span className="text-2xl font-bold"> </span>
                         </h1>
-                        <div className="lg:flex lg:justify-between lg:items-center">
-                            <div>
-                                <h1 className="mt-4">
-                                    All Products
-                                </h1>
-                            </div>
-                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mx-auto p-4 bg-white rounded-lg ">
+                        <div className="flex lg:justify-between lg:items-center">
+                         
+                            <form onSubmit={handleSearch} className="flex items-center w-full max-w-md mx-auto p-1 bg-white rounded-lg ">
                                 <input
                                     type="text"
                                     className="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-500"
@@ -146,9 +142,10 @@ const AllProductsPage = () => {
 
 
                                 <Sheet>
-                                    <SheetTrigger className="text-xl" ><span className="flex justify-center items-center"> 
+                                    <SheetTrigger className="text-xl mt-[-10px]" ><span className=" flex lg:justify-center items-center "> 
                                   
-                                    <Filter className="text-sm lg:mt-2 mt-1"/>   Filter 
+                                    <Filter 
+                                    className="text-sm lg:mt-2 "/>   Filter 
                                     </span>
                                    
                                      </SheetTrigger>
@@ -230,35 +227,44 @@ const AllProductsPage = () => {
                                 </Sheet>
                             </div>
                         </div>
-                        <hr className="w-full border-lime-500 my-4" />
+                        <hr className="w-full border-lime-500 my-4 px-4" />
                         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-10">
                             {products?.map((product: Product) => (
-                                <div key={product._id} className="lg:w-[100%] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                                    <img className="lg:w-[100%] lg:h-[180px] w-[50%]  rounded-t-lg  " src={product.image} alt={product.name} />
-                                    <div className="p-4">
-
-                                        <h2 className="text-lg font-semibold w-[90%]">{product.name}</h2>
-
-                                        <div className="flex gap-2"> {renderStars(product.rating)}</div>
-                                        <div dangerouslySetInnerHTML={{ __html: product.description.length > 10 ? `
-                    ${product.description.slice(0, 50)}...` : product.description }} />
-                                        <div className="flex justify-between">
-                                            <div>
-                                                <h5 className="text-black">Category: {product.category}</h5>
-                                                <h5 className="text-black">Brand: {product.brand}</h5>
-                                            </div>
-                                            <div>
-                                                <h5 className="text-black font-normal border-b-2 border-lime-500">Price: {product.price}$</h5>
-                                                <h5 className="text-black">Stock: {product.stockQuantity}</h5>
-                                            </div>
-                                        </div>
-                                        <Link to={`/singleproduct/${product._id}`}>
-                                            <Button variant="outline" className="text-black mt-2 bg-lime-300 w-full" >
-                                                View Details
-                                            </Button>
-                                        </Link>
-                                    </div>
-                                </div>
+                             <div key={product._id} className="lg:w-[100%] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                                 <img className="lg:w-[100%] w-[80%]  h-[180px] rounded-t-lg mx-auto" src={product.image} alt={product.name} />
+                             <div className="p-4">
+                               <h2 className="text-lg font-semibold truncate" style={{ maxWidth: '90%' }}>{product.name}</h2>
+                               <div className="flex gap-2">{renderStars(product.rating)}</div>
+                               <div
+                                 className="text-sm overflow-hidden text-ellipsis"
+                                 style={{
+                                   display: '-webkit-box',
+                                   WebkitLineClamp: 3,
+                                   WebkitBoxOrient: 'vertical',
+                                   overflow: 'hidden'
+                                 }}
+                                 dangerouslySetInnerHTML={{
+                                   __html: product.description.length > 50 ? `${product.description.slice(0, 50)}...` : product.description,
+                                 }}
+                               />
+                               <div className="flex justify-between mt-2">
+                                 <div className="w-1/2">
+                                   <h5 className="text-black truncate">Category: {product.category}</h5>
+                                   <h5 className="text-black truncate">Brand: {product.brand}</h5>
+                                 </div>
+                                 <div className="w-1/2">
+                                   <h5 className="text-black font-normal border-b-2 border-lime-500 truncate">Price: {product.price}$</h5>
+                                   <h5 className="text-black truncate">Stock: {product.stockQuantity}</h5>
+                                 </div>
+                               </div>
+                               <Link to={`/singleproduct/${product._id}`}>
+                                 <Button variant="outline" className="text-black mt-2 bg-lime-300 w-full">
+                                   View Details
+                                 </Button>
+                               </Link>
+                             </div>
+                           </div>
+                           
                             ))}
                         </div>
                     </div>

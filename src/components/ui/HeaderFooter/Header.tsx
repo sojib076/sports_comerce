@@ -28,7 +28,7 @@ const Header = () => {
           </div>
           <ul
             className={`md:flex lg:hidden z-40 text-white md:items-center ${
-              menuOpen ? "opacity-100 top-[72px]" : "opacity-0 top-[-300px]"
+              menuOpen ? "opacity-100 top-[-px]" : "opacity-0 top-[-300px]"
             } absolute bg-black w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 transition-all ease-in duration-500`}
           >
             <li className="mx-4 my-6 md:my-0 text-xl">

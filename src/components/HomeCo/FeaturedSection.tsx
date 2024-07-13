@@ -44,14 +44,14 @@ const FeaturedSection = () => {
       <div className="">
         <h1 className="lg:text-5xl text-2xl font-extrabold  p-1 border-b-2 border-lime-500 w-fit">Featured</h1>
         <Carousel className="lg:my-10">
-          <CarouselContent className="lg:gap-10 md:px-7 gap-5 px-4 mb-5">
+          <CarouselContent className="lg:gap-10 md:px-7 gap-5 mb-5">
             {products.map((product:any) => (
             <CarouselItem
             className="lg:basis-[32%] hover:scale-90 py-1 rounded-lg transition-all ease-in 3s"
             key={product._id}
           >
             <div className="w-80 h-[420px] bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out">
-              <img className="w-[100%]  h-[180px] rounded-t-lg" src={product.image} alt={product.name} />
+              <img className="lg:w-[100%] w-[90%] mx-auto  h-[180px] rounded-t-lg" src={product.image} alt={product.name} />
               <div className="p-4">
                 <div className="flex justify-between">
                   <h2 className="text-lg font-semibold truncate" style={{ maxWidth: '75%' }}>{product.name}</h2>
@@ -90,8 +90,8 @@ const FeaturedSection = () => {
           
             ))}
           </CarouselContent>
-          <CarouselPrevious className="lg:hidden flex lg:ml-[0px] ml-[40px] bg-black text-white hover:bg-black hover:text-white" />
-          <CarouselNext className="lg:mr-[0px] lg:hidden flex mr-[40px] bg-black text-white border-none hover:bg-black hover:text-white" />
+          <CarouselPrevious className="lg:hidden flex lg:ml-[0px] ml-[30px] bg-black text-white hover:bg-black hover:text-white" />
+          <CarouselNext className="lg:mr-[0px] lg:hidden flex mr-[30px] bg-black text-white border-none hover:bg-black hover:text-white" />
         </Carousel>
       </div>
     </div>
