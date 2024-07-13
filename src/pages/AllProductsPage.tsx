@@ -43,7 +43,9 @@ const AllProductsPage = () => {
    
     useEffect(() => {
         setProducts(datas);
+        refetch();
     }, [datas]);
+
 
     if (isLoading) return <div className=''> 
     <h1 > <Loader2Icon className='animate-spin w-[40%] h-[50vh]  mx-auto'></Loader2Icon> </h1>

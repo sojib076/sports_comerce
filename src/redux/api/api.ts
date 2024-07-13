@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({ baseUrl:"https://sports-ecomerce-backend.vercel.app/api/v1/"}),
-  tagTypes: ["Product"],
+  tagTypes: ['Product', 'User'],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: ({ searchTerm, category }) => {
@@ -18,13 +18,13 @@ export const baseApi = createApi({
         if (params.toString()) {
           url += `?${params.toString()}`;
         }
-        console.log("Fetching URL:", url);
+
         return {
           url,
           method: "GET",
         };
       },
-      providesTags: ["Product"],
+      providesTags: ['Product'],
     }),
     getSingleProduct: builder.query({
       query: (id) => ({
@@ -39,6 +39,7 @@ export const baseApi = createApi({
         method: "POST",
         body: { productIds },
       }),
+      providesTags: ["Product"],
     }),
     updateStockStatus: builder.mutation({
       query: ({ productIds, stockquantity }) => ({

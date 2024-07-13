@@ -15,7 +15,7 @@ const FeaturedSection = () => {
       const timer = setTimeout(() => {
         refetch();
       
-      }, 30000);
+      }, 300);
       return () => clearTimeout(timer);
     }, [products]);
 
