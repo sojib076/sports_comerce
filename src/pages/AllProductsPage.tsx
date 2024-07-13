@@ -17,7 +17,7 @@ import renderStars from "@/helpers/renderStars";
 import { Filter, Loader2Icon, Star } from "lucide-react";
 import Rating from "react-rating";
 import { Link, useLocation } from "react-router-dom";
-import { useGetProductsQuery } from "@/redux/api/api";
+import { useGetProductsQuery } from "@/redux/api/baseApi";
 import { Product } from "@/helpers/Products";
 
 
@@ -30,7 +30,7 @@ const AllProductsPage = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("");
     
-    const { data, isLoading, isError,refetch } = useGetProductsQuery({ searchTerm, category});
+    const { data, isLoading, isError,refetch } = useGetProductsQuery({ searchTerm, category},{pollingInterval: 30000});
     const datas = data?.data;
     const location = useLocation();
 

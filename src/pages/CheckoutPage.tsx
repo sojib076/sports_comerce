@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { useUpdateStockStatusMutation } from "@/redux/api/api";
+import { useUpdateStockStatusMutation } from "@/redux/api/baseApi";
 import { resetCheckout } from "@/redux/features/products/singleproductslice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useState,  } from "react";

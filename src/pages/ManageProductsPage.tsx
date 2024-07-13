@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useCreateProductMutation, useGetProductsQuery } from "@/redux/api/api";
+import { useCreateProductMutation, useGetProductsQuery } from "@/redux/api/baseApi";
 import {  Star } from "lucide-react";
 import { useState } from "react";
 import ReactQuill from 'react-quill';
@@ -34,14 +34,14 @@ const ManageProductsPage = () => {
             price: price.value,
             description: editorValue
         }
-        createProduct(formdata) 
     
         try {
+            createProduct(formdata) 
             refetch();
             toast.success("Product added successfully");
          
         } catch (error) {
-            
+            console.log(error);
             toast.error("Something went wrong");
         }
 

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import renderStars from "@/helpers/renderStars";
 import { useAppDispatch } from "@/redux/hooks";
 import { addProduct } from "@/redux/features/products/singleproductslice";
-import { useGetSingleProductQuery } from "@/redux/api/api";
+import { useGetSingleProductQuery } from "@/redux/api/baseApi";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Loader2Icon } from "lucide-react";

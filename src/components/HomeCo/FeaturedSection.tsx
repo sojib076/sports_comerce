@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import renderStars from "@/helpers/renderStars";
-import { useGetProductsQuery } from "@/redux/api/api";
+import { useGetProductsQuery } from "@/redux/api/baseApi";
 import { Loader2Icon } from "lucide-react";
 import { useEffect } from "react";
 

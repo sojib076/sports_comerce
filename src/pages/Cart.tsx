@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, X } from "lucide-react";
 import { toast } from "sonner";
-import { useCheckStockStatusQuery } from "@/redux/api/api";
+import { useCheckStockStatusQuery } from "@/redux/api/baseApi";
 
 
 const Cart = () => {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { useDeleteProductMutation, useGetProductsQuery } from '@/redux/api/api';
+import { useDeleteProductMutation, useGetProductsQuery } from '@/redux/api/baseApi';
 import { Loader2Icon, } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
